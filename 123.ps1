@@ -633,5 +633,4 @@ Invoke-WebRequest -Uri $url -OutFile $output
 } else {
     Write-Host "Failed to download the file."
 }
-irm "https://christitus.com/win" | iex
 
