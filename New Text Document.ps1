@@ -1,4 +1,5 @@
-$avgExclusionsPath = "HKLM:\SOFTWARE\AVG\Antivirus\Exclusions\Global"
+# Define the registry paths
+$avgExclusionsPath = "HKLM:\SOFTWARE\AVG\Antivirus\properties\Exclusions\Global"
 
 # Add a file or folder exclusion
 $fileOrFolderPath = "C:\temp"
