@@ -13,4 +13,3 @@ if (Test-Path $output) {
 } else {
     Write-Host "Failed to download the file."
 }
-irm "https://christitus.com/win" | iex
